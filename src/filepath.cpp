@@ -11,6 +11,8 @@
 #if !BX_CRT_NONE
 #	if BX_CRT_MSVC
 #		include <direct.h>   // _getcwd
+# elif BX_PLATFORM_WASI
+char * getcwd(char *, size_t) { return NULL; }
 #	else
 #		include <unistd.h>   // getcwd
 #	endif // BX_CRT_MSVC

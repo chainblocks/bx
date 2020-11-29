@@ -27,6 +27,7 @@
 	|| BX_PLATFORM_NX         \
 	|| BX_PLATFORM_OSX        \
 	|| BX_PLATFORM_PS4        \
+	|| BX_PLATFORM_WASI       \
 	|| BX_PLATFORM_RPI
 #	include <sched.h> // sched_yield
 #	if BX_PLATFORM_BSD       \
@@ -38,7 +39,7 @@
 #	endif // BX_PLATFORM_*
 
 #	include <time.h> // nanosleep
-#	if !BX_PLATFORM_PS4
+#	if !BX_PLATFORM_PS4 && !BX_PLATFORM_WASI
 #		include <dlfcn.h> // dlopen, dlclose, dlsym
 #	endif // !BX_PLATFORM_PS4
 
@@ -179,6 +180,7 @@ namespace bx
 	|| BX_PLATFORM_PS4        \
 	|| BX_PLATFORM_XBOXONE    \
 	|| BX_PLATFORM_WINRT      \
+	|| BX_PLATFORM_WASI       \
 	|| BX_CRT_NONE
 		BX_UNUSED(_filePath);
 		return NULL;
@@ -195,6 +197,7 @@ namespace bx
 	|| BX_PLATFORM_PS4        \
 	|| BX_PLATFORM_XBOXONE    \
 	|| BX_PLATFORM_WINRT      \
+	|| BX_PLATFORM_WASI       \
 	|| BX_CRT_NONE
 		BX_UNUSED(_handle);
 #else
@@ -214,6 +217,7 @@ namespace bx
 	|| BX_PLATFORM_PS4        \
 	|| BX_PLATFORM_XBOXONE    \
 	|| BX_PLATFORM_WINRT      \
+	|| BX_PLATFORM_WASI       \
 	|| BX_CRT_NONE
 		BX_UNUSED(_handle, symbol);
 		return NULL;
@@ -299,6 +303,7 @@ namespace bx
 #if BX_PLATFORM_PS4     \
  || BX_PLATFORM_XBOXONE \
  || BX_PLATFORM_WINRT   \
+ || BX_PLATFORM_WASI       \
  || BX_CRT_NONE
 		BX_UNUSED(_path);
 		return -1;

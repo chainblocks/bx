@@ -12,6 +12,7 @@
 #	define BX_CONFIG_CRT_PROCESS !(0  \
 			|| BX_CRT_NONE            \
 			|| BX_PLATFORM_EMSCRIPTEN \
+			|| BX_PLATFORM_WASI       \
 			|| BX_PLATFORM_PS4        \
 			|| BX_PLATFORM_WINRT      \
 			|| BX_PLATFORM_XBOXONE    \
